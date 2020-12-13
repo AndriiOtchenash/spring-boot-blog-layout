@@ -13,7 +13,7 @@ public class Post {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
     private String title, anons, full_text;
-    private int vievs;
+    private int views;
 
     public Long getId() {
         return id;
@@ -47,12 +47,12 @@ public class Post {
         this.full_text = full_text;
     }
 
-    public int getVievs() {
-        return vievs;
+    public int getViews() {
+        return views;
     }
 
-    public void setVievs(int vievs) {
-        this.vievs = vievs;
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public Post() {
