@@ -6,22 +6,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
 <header th:insert="blocks/header :: header" ></header>
 
 <!--<p th:text="'Hello, ' + ${title} + '!'" />-->
-<div class="container mt-5">
-    <div th:each="el : ${post}" class="alert alert-info mt-2">
-        <h1 th:text="${el.title}"/>
-        <p th:text="${el.full_text}"/>
-        <p> <b>Views</b> <span th:text="${el.views}"/> </p>
-        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a><br><br>
-        <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
-            <button class="btn btn-warning" type="submit">Delete</button>
+<div class="container mt-5 mb-5">
+    <h1>Edition of article</h1>
+    <div th:each="el : ${post}">
+        <form method="post">
+            <input type="text" th:value="${el.title}"  name="title" placeholder="Type name of Article" class="form-control"><br>
+            <input type="text" th:value="${el.anons}" name="anons" placeholder="Type anons of Article" class="form-control"><br>
+            <textarea name="full_text" placeholder="Type full text of Article" class="form-control" th:text="${el.full_text}" /><br>
+            <button type="submit" class="btn btn-success">Update</button>
         </form>
-
     </div>
 </div>
 
 <div th:insert="blocks/footer :: footer" ></div>
+
 </body>
 </html>
